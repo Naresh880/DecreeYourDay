@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "202543829437",
+    "firebase_url": "https://decree-c8b00.firebaseio.com",
+    "project_id": "decree-c8b00",
+    "storage_bucket": "decree-c8b00.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:202543829437:android:ad8212b5057f076c",
+        "android_client_info": {
+          "package_name": "com.example.android.play_api"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "202543829437-5urqjkcjsjhrrfvs7hj3ig5gk4jho4cj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.play_api",
+            "certificate_hash": "613d8f3fd893e71a92eb79b4fce53ee5ecd100e0"
+          }
+        },
+        {
+          "client_id": "202543829437-nttk0ffes8e4gt32irj39btmnh0pq5n1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKtTe0aiyK2nyby4RUqK52T6gtD7jXqOI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "202543829437-nttk0ffes8e4gt32irj39btmnh0pq5n1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

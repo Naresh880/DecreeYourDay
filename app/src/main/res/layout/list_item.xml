@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:background="#00ffffff">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="300dp"
+            android:layout_height="83dp"
+            app:cardCornerRadius="13dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:background="#29436a"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="JUN"
+                        android:textColor="#ffffff"
+                        android:textSize="12sp"
+                        android:id="@+id/month"
+                        android:fontFamily="@font/poppins_medium"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="21"
+                        android:id="@+id/day"
+                        android:textSize="24sp"
+                        android:textColor="#ffffff"
+                        android:fontFamily="@font/poppins_bold"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Propelled By His …"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:paddingLeft="23dp"
+                    android:paddingRight="23dp"
+
+                    android:id="@+id/title"/>
+
+
+            </LinearLayout>
+
+
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

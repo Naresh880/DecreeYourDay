@@ -1,0 +1,157 @@
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_purple"
+    tools:context=".MainsplashActivity"
+    android:id="@+id/drawer">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bubbles"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="70dp"
+            >
+
+            <ImageView
+                android:layout_width="182dp"
+                android:layout_height="182dp"
+                android:src="@drawable/owner"
+                />
+
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="@string/about"
+                android:layout_marginTop="18dp"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_medium"/>
+
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="Acknowledgement"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="14dp"/>
+
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="@string/about2"
+                android:textSize="14sp"
+                android:textColor="#ffffff"
+                android:fontFamily="@font/poppins_medium"
+                />
+        </LinearLayout>
+            </ScrollView>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="28dp"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:titleMarginStart="40dp" />
+        </FrameLayout>
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation"
+        android:layout_width="290dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="#ffffff"
+        app:itemTextColor="#595a5c"
+        app:menu="@menu/drawer_menu"
+        app:headerLayout="@layout/drawer_header"
+        android:theme="@style/fonter"
+        app:itemHorizontalPadding="44dp"
+        >
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="119dp"
+                android:layout_gravity="bottom"
+                android:orientation = "horizontal"
+                android:background="@drawable/gradient_green">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Donate"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="25sp"
+                    android:textColor="#ffffff"
+                    android:id="@+id/donate_btn"
+                    android:layout_marginBottom="44dp"
+                    android:layout_marginLeft="39dp"
+                    android:layout_marginTop="30dp"
+                    android:background="#00ffffff"
+                    android:textAllCaps="false"
+                    />
+
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/donate_img"
+                android:layout_width="150dp"
+                android:layout_height="158dp"
+                android:src="@drawable/donate"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="12dp"
+                android:layout_marginLeft="135dp"/>
+        </FrameLayout>
+
+
+    </android.support.design.widget.NavigationView>
+
+
+
+
+</android.support.v4.widget.DrawerLayout>

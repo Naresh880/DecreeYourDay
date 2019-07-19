@@ -1,0 +1,52 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
+    <style name="fonter" parent="AppTheme">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#595a5c</item>
+        <!-- <item name="android:layout_marginLeft">44dp</item>
+        <item name="android:layout_marginBottom">18dp</item>
+        <item name="android:layout_marginTop">18dp</item>-->
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <style name="DefaultNumberPickerTheme" parent="AppTheme">
+        <item name="colorControlNormal">#00ffffff</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColorPrimary">#ffffff</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+
+    </style>
+
+
+    <style name="spinnerItemStyle" parent="android:Widget.TextView.SpinnerItem">
+    </style>
+
+    <style name="spinnerDropDownItemStyle" parent="android:TextAppearance.Widget.TextView.SpinnerItem">
+    </style>
+
+    <style name="SCBSwitch" parent="Theme.AppCompat.Light">
+
+        <item name="colorAccent">#4cd964</item>
+    </style>
+</resources>

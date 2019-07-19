@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Decree</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="title_activity_mainhome">MainhomeActivity</string>
+    <string name="prays">Thank You, Sweet Holy Spirit, for\nbeing my instructor.\n I decide today to be like you. I\nreceive the grace to do it now,\nin Jesus’ name.</string>
+    <string name="about">Decree  Your  Day  Daily  Devotional\nCopyright©  Modele  Fatoyinbo  2018\nSubject to acknowledgement of copyright\nownership, parts (not the whole) of this\npublication may be used as necessary for\nthe edification of believers in the Body of\nChrist. All Bible quotations are from the New King James Version of the Bible, unless otherwise indicated.</string>
+    <string name="about2">I want to thank God for access into his presence and grace to complete this project. Special thanks to my husband, the Rev. Biodun Fatoyinbo, Senior Pastor of the Commonwealth of Zion Assembly for his unending help and ceaseless support. And fi nally, my thanks to everyone that helped to put this publication together.</string>
+    <string name="read">A wise man said, ‘time is free, but it is priceless’. You cannot own it, but you can use it. The sum up of our lives on earth is measured in time ticking from second, minutes, hours, days, weeks, months, to years. Our choice to spend every second wisely is instrumental in fulfilling our dreams, assignment, and purpose. God created time for us to be accountable. In today’s verse, God, the Almighty Himself set a definite time for what He intended to do. This should be our lifestyle as believers. Other things we need to put into cognizance is, first of all, recognizing where we are. This will help us to appraise ourselves with respect to where we intend to be. Secondly, we need to start setting goals based on the things that need to be achieved to create the big picture. In doing this, having a to-do list every day is a simple way of breaking down the goals for execution. However, to avoid losing grip of time, we should be mindful of time wasters. We ourselves could be the wasters of our time if we continue to whine, complain or worry. It also could be distractions from people and family members. Regardless of where you are in the timetable of life, you can always make amends and begin again. God is a restorer of time if you will allow Him to route you back</string>
+
+    <string-array name="sizes">
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
+    </string-array>
+
+    <string-array name="languages">
+        <item>French</item>
+        <item>Igbo</item>
+        <item>Spanish</item>
+        <item>English</item>
+        <item>Hausa</item>
+        <item>Yoruba</item>
+    </string-array>
+
+</resources>
