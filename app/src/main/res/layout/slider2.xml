@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00ffffff"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:text="Welcome"
+        android:textColor="#ffffff"
+        android:textSize="36sp"
+        android:fontFamily="@font/poppins_bold"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="What should I call you?"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        android:fontFamily="@font/poppins_medium"/>
+
+    <EditText
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:hint="ex. Alex Phil"
+        android:background="@drawable/ovals"
+        android:textColorHint="#9b9b9b"
+        android:id="@+id/name_text"
+        android:padding="16dp"
+        android:text=""
+        android:layout_marginTop="40dp"/>
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Take Me"
+        android:textAlignment="center"
+        android:id="@+id/save_btn"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="#ffffff"
+        android:layout_marginTop="60dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="@drawable/grad_green_btn"/>
+
+</LinearLayout>
