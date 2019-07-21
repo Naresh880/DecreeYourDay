@@ -119,6 +119,7 @@ be, will be”  mindset.  "
                         android:layout_height="64dp"
                         android:orientation="horizontal"
                         android:background="#29436a"
+                        android:id="@+id/btns"
                         >
 
                         <LinearLayout
@@ -230,7 +231,6 @@ be, will be”  mindset.  "
                         android:id="@+id/recycler_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp"
                         android:layout_marginTop="4dp"
                         android:layout_marginBottom="?attr/actionBarSize"
                         />
