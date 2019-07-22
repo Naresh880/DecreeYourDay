@@ -307,6 +307,7 @@ public class IntroActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = pref.edit();
         editor.putString("Theme","Light");
         editor.putString("Size","Medium");
+        editor.putString("ImagePath","None");
         editor.commit();
     }
 

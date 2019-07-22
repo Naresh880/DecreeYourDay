@@ -1,7 +1,15 @@
 package com.example.android.play_api;
 
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.provider.MediaStore;
+import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +24,14 @@ import android.widget.Toast;
 
 import com.suke.widget.SwitchButton;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class SettingActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private EditText name;
@@ -23,7 +39,13 @@ public class SettingActivity extends AppCompatActivity implements AdapterView.On
     private com.suke.widget.SwitchButton switchButton;
     private TextView mode,save;
     private ImageView close;
+    private CircleImageView profile;
+    private FloatingActionButton edit;
+    private static final int PICK_IMAGE = 1;
+    Uri imageuri;
     int pos1,pos2;
+    String path;
+    private int ischanged = 0;
     String username,size,language,theme;
 
     String sizevals[] = new String[] {"Small","Medium","Large"};
@@ -106,18 +128,40 @@ public class SettingActivity extends AppCompatActivity implements AdapterView.On
                 SettingActivity.this.finish();
             }
         });
+
+
+        profile = (CircleImageView) findViewById(R.id.profileImage);
+
+        edit = (FloatingActionButton) findViewById(R.id.edit);
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent gallery = new Intent();
+                gallery.setType("image/*");
+                gallery.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(gallery,"Select Profile Picture"),PICK_IMAGE);
+            }
+        });
+
+        if(!(getProfile().equals("None")))
+        {
+            loadImageFromStorage(getProfile());
+        }
     }
 
     private void save_info()
     {
         username = name.getText().toString();
-        Toast.makeText(SettingActivity.this,username +" : "+language+" : "+theme+" : "+size,Toast.LENGTH_SHORT ).show();
         SharedPreferences pref =  getApplicationContext().getSharedPreferences("PLAY_API",MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
         editor.putString("Name",username);
         editor.putString("Language",language);
         editor.putString("Theme",theme);
         editor.putString("Size",size);
+        if(ischanged==1)
+        {
+            saveImagePath(path);
+        }
         editor.apply();
 
         Toast.makeText(SettingActivity.this,"Changes Applied Successfully!",Toast.LENGTH_SHORT).show();
@@ -153,8 +197,6 @@ public class SettingActivity extends AppCompatActivity implements AdapterView.On
         size = prefs.getString("Size","Medium");
         language = prefs.getString("Language","English");
 
-
-
         for (int i=0;i<sizevals.length;i++)
         {
             if(sizevals[i].equals(size))
@@ -171,5 +213,77 @@ public class SettingActivity extends AppCompatActivity implements AdapterView.On
                 pos2 = i;
             }
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==PICK_IMAGE && resultCode==RESULT_OK)
+        {
+            imageuri = data.getData();
+
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),imageuri);
+                path = saveToInternalStorage(bitmap);
+                ischanged = 1;
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private String saveToInternalStorage(Bitmap bitmapImage){
+        ContextWrapper cw = new ContextWrapper(getApplicationContext());
+        // path to /data/data/yourapp/app_data/imageDir
+        File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
+        // Create imageDir
+        File mypath=new File(directory,"profile.jpg");
+
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(mypath);
+            // Use the compress method on the BitMap object to write image to the OutputStream
+            bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
+            profile.setImageBitmap(bitmapImage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return directory.getAbsolutePath();
+    }
+
+    private void loadImageFromStorage(String path)
+    {
+
+        try {
+            File f=new File(path, "profile.jpg");
+            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
+            profile.setImageBitmap(b);
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+
+    }
+
+    private String getProfile() {
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences("PLAY_API",MODE_PRIVATE);
+        return prefs.getString("ImagePath","None");
+    }
+
+    void saveImagePath(String path) {
+        SharedPreferences pref =  getApplicationContext().getSharedPreferences("PLAY_API",MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("ImagePath",path);
+        editor.apply();
     }
 }

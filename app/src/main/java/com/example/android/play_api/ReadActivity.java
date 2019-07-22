@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -39,10 +41,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 import java.util.regex.Pattern;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ReadActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -58,6 +65,7 @@ public class ReadActivity extends AppCompatActivity implements NavigationView.On
     private int status = 0;
     private Dialog verse_popup;
     private ImageView frame;
+    private CircleImageView profile;
     @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,9 +105,12 @@ public class ReadActivity extends AppCompatActivity implements NavigationView.On
         TextView name = (TextView) header.findViewById(R.id.name);
         String nameText = getName()+"!";
         name.setText(nameText);
+        profile  = (CircleImageView) header.findViewById(R.id.userImage);
+        if(!getProfile().equals("None")) {
+            loadImageFromStorage(getProfile());
+        }
         item fromintent = (item) getIntent().getSerializableExtra("ITEM");
         init_data(fromintent);
-
         if(getThem().equals("Dark"))
         {
             drawer.setBackgroundColor(Color.parseColor("#000000"));
@@ -326,5 +337,25 @@ public class ReadActivity extends AppCompatActivity implements NavigationView.On
         }
 
         return false;
+    }
+
+    private void loadImageFromStorage(String path)
+    {
+
+        try {
+            File f=new File(path, "profile.jpg");
+            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
+            profile.setImageBitmap(b);
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+
+    }
+
+    private String getProfile() {
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences("PLAY_API",MODE_PRIVATE);
+        return prefs.getString("ImagePath","None");
     }
 }

@@ -21,11 +21,11 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:id="@+id/close"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/close"
-            android:id="@+id/close"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true"
+            android:src="@drawable/close" />
     </RelativeLayout>
 
     <TextView
@@ -35,10 +35,9 @@
         android:textSize="36sp"
         android:textColor="#000000"
         android:fontFamily="@font/poppins_bold"/>
-    <android.support.v7.widget.CardView
+ <!--   <android.support.v7.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
         app:cardCornerRadius="40dp"
         android:shape="ring"
         android:elevation="12dp"
@@ -52,12 +51,43 @@
             android:id="@+id/user-image"
             android:src="@drawable/download"
             />
-    </android.support.v7.widget.CardView>
+    </android.support.v7.widget.CardView> -->
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:padding="8dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:src="@drawable/person"
+                    android:id="@+id/profileImage"/>
+                    <View
+                        android:layout_width="94dp"
+                        android:layout_height="16dp"/>
+                </LinearLayout>
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/edit"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    app:borderWidth="0dp"
+                    android:layout_marginBottom="14dp"
+                    android:layout_marginRight="4dp"
+                    android:backgroundTint="#73C2FB"
+                    android:src="@drawable/edit"
+                    app:fabCustomSize="28dp"
+                    android:layout_gravity="end|bottom"
+                    />
+            </FrameLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:layout_marginBottom="10dp"
         android:text="Name"
         android:textSize="16sp"

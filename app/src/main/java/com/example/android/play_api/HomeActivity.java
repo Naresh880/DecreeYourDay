@@ -4,6 +4,8 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.audiofx.Equalizer;
@@ -43,6 +45,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -56,6 +59,8 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, RecyclerAdapter.OnItemClickListener {
 
@@ -73,6 +78,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private NestedScrollView scroller;
     private CardView cardView;
     private LinearLayout previous;
+    private CircleImageView profile;
     Dialog calendar_dialog;
     private LinearLayout btns;
     private static final String URL = "https://dyd-njs.herokuapp.com/getDevotions";
@@ -134,6 +140,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         String nameText = getName()+"!";
         name.setText(nameText);
 
+        profile  = (CircleImageView) header.findViewById(R.id.userImage);
+        if(!getProfile().equals("None")) {
+            loadImageFromStorage(getProfile());
+        }
         init_data();
 
 
@@ -348,6 +358,26 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         Intent intent = new Intent(HomeActivity.this,ReadActivity.class);
         intent.putExtra("ITEM",itemList.get(position));
         startActivity(intent);
+    }
+
+    private void loadImageFromStorage(String path)
+    {
+
+        try {
+            File f=new File(path, "profile.jpg");
+            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
+            profile.setImageBitmap(b);
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+
+    }
+
+    private String getProfile() {
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences("PLAY_API",MODE_PRIVATE);
+        return prefs.getString("ImagePath","None");
     }
 
 
