@@ -2,6 +2,7 @@ package com.example.android.play_api;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -54,6 +55,10 @@ public class PrayerActivity extends AppCompatActivity implements NavigationView.
         drawer.addDrawerListener(toggler);
         toggler.syncState();
 
+        if(getThem().equals("Dark"))
+        {
+            drawer.setBackgroundColor(Color.parseColor("#000000"));
+        }
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation);
         navigationView.setNavigationItemSelectedListener(this);
@@ -89,6 +94,11 @@ public class PrayerActivity extends AppCompatActivity implements NavigationView.
         {
             drawer.closeDrawers();
         }
+        else if(id == R.id.settings)
+        {
+            startActivity(new Intent(PrayerActivity.this,SettingActivity.class));
+            drawer.closeDrawers();
+        }
         else if(id== R.id.devotion)
         {
             startActivity(new Intent(PrayerActivity.this,HomeActivity.class));
@@ -102,5 +112,10 @@ public class PrayerActivity extends AppCompatActivity implements NavigationView.
         SharedPreferences prefs = getApplicationContext().getSharedPreferences("PLAY_API",MODE_PRIVATE);
         return prefs.getString("Name","User");
     }
+    private String getThem() {
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences("PLAY_API",MODE_PRIVATE);
+        return prefs.getString("Theme","Light");
+    }
+
 
 }

@@ -5,18 +5,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
+    android:id="@+id/back"
     android:background="@drawable/gradient_purple">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bubbles"
+        android:scaleType="centerCrop"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/bubbles"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="0.65"
+    android:gravity="center_horizontal">
+<View
+    android:layout_width="0dp"
+    android:layout_weight="0.2"
+    android:layout_height="match_parent"/>
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.6"
+        android:background="@drawable/splash"
+        />
+    <View
+        android:layout_width="0dp"
+        android:layout_weight="0.2"
+        android:layout_height="match_parent"/>
+</LinearLayout>
 
-        <ImageView
-            android:layout_width="218dp"
-            android:layout_height="479dp"
-            android:background="@drawable/splash"
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.35"
             />
 
     </LinearLayout>

@@ -7,32 +7,40 @@
     tools:context=".IntroActivity"
     android:background="@drawable/gradient_purple">
 
-    <LinearLayout
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:src="@drawable/bubbles"
+        android:scaleType="centerCrop"/>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center_horizontal"
-        android:background="@drawable/bubbles">
+        app:layout_constraintTop_toTopOf="parent">
 
         <RelativeLayout
+            android:id="@+id/relativeLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            >
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <Button
+                android:id="@+id/back_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="40dp"
-                android:layout_alignParentLeft="true"
                 android:background="#00ffffff"
                 android:fontFamily="@font/poppins_medium"
                 android:text="Back"
-                android:id="@+id/back_btn"
                 android:textAllCaps="false"
                 android:textColor="#fff"
                 android:textSize="18sp" />
@@ -42,8 +50,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"
                 android:layout_marginTop="40dp"
+                android:layout_marginRight="20dp"
                 android:background="#00ffffff"
                 android:fontFamily="@font/poppins_medium"
                 android:text="Next"
@@ -56,29 +64,43 @@
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="450dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="18dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+            app:layout_constraintVertical_bias="0.156"
+            tools:layout_editor_absoluteX="-16dp" />
+
         <LinearLayout
+            android:id="@+id/dot_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/dot_layout"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:gravity="center">
+            app:layout_constraintBottom_toTopOf="@+id/swipe_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewpager">
 
         </LinearLayout>
+
         <TextView
+            android:id="@+id/swipe_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Swipe Left"
-            android:id="@+id/swipe_text"
-            android:textSize="16sp"
-            android:textColor="#ffffff"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:fontFamily="@font/poppins_medium"
-            android:layout_marginTop="20dp"/>
+            android:text="Swipe Left"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewpager" />
 
 
-    </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>

@@ -33,6 +33,7 @@ import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -56,6 +57,7 @@ public class ReadActivity extends AppCompatActivity implements NavigationView.On
     private CardView popup;
     private int status = 0;
     private Dialog verse_popup;
+    private ImageView frame;
     @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +83,7 @@ public class ReadActivity extends AppCompatActivity implements NavigationView.On
         }
 
         drawer = (DrawerLayout) findViewById(R.id.drawer);
+        frame = (ImageView)findViewById(R.id.frame);
         toggler = new ActionBarDrawerToggle(this,drawer,R.string.open,R.string.close);
         drawer.addDrawerListener(toggler);
         toggler.syncState();
@@ -97,6 +100,12 @@ public class ReadActivity extends AppCompatActivity implements NavigationView.On
         item fromintent = (item) getIntent().getSerializableExtra("ITEM");
         init_data(fromintent);
 
+        if(getThem().equals("Dark"))
+        {
+            drawer.setBackgroundColor(Color.parseColor("#000000"));
+            frame.setImageResource(R.drawable.bubbles);
+            content.setTextColor(Color.parseColor("#ffffff"));
+        }
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,24 +138,6 @@ public class ReadActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-       /* verse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(status == 0) {
-                    movable.setVisibility(View.INVISIBLE);
-                    verse_desc.setVisibility(View.INVISIBLE);
-                    popup.setVisibility(View.VISIBLE);
-                    status =1;
-                }
-                else
-                {
-                    movable.setVisibility(View.VISIBLE);
-                    verse_desc.setVisibility(View.VISIBLE);
-                    popup.setVisibility(View.GONE);
-                    status = 0;
-                }
-            }
-        });*/
 
        verse.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -198,6 +189,11 @@ public class ReadActivity extends AppCompatActivity implements NavigationView.On
 
             }
         });
+    }
+
+    private String getThem() {
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences("PLAY_API",MODE_PRIVATE);
+        return prefs.getString("Theme","Light");
     }
 
 
@@ -316,6 +312,11 @@ public class ReadActivity extends AppCompatActivity implements NavigationView.On
         else if(id == R.id.prayer)
         {
             startActivity(new Intent(ReadActivity.this,PrayerActivity.class));
+            drawer.closeDrawers();
+        }
+        else if(id == R.id.settings)
+        {
+            startActivity(new Intent(ReadActivity.this,SettingActivity.class));
             drawer.closeDrawers();
         }
         else if(id== R.id.devotion)

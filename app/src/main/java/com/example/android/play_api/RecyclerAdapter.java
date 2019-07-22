@@ -1,10 +1,12 @@
 package com.example.android.play_api;
 
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -49,6 +51,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.HomeRe
         homeRecycler.day.setText(itemList.get(i).getDay()+"");
         homeRecycler.title.setText(itemList.get(i).getTitle());
 
+        if(itemList.get(i).getTheme().equals("Dark"))
+        {
+            homeRecycler.changer.setBackgroundResource(R.drawable.dark);
+        }
+
     }
 
     @Override
@@ -62,13 +69,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.HomeRe
         public TextView month;
         public TextView day;
         public TextView title;
+        public LinearLayout changer;
         public HomeRecycler(View itemView) {
             super(itemView);
 
             month = (TextView) itemView.findViewById(R.id.month);
             day = (TextView) itemView.findViewById(R.id.day);
             title = (TextView) itemView.findViewById(R.id.title);
-
+            changer = (LinearLayout) itemView.findViewById(R.id.changer);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -85,4 +93,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.HomeRe
 
         }
     }
+
+
+
 }

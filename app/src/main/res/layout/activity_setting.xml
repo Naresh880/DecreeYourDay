@@ -24,6 +24,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/close"
+            android:id="@+id/close"
             android:layout_alignParentRight="true"/>
     </RelativeLayout>
 
@@ -67,6 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/name"
+        android:backgroundTint="#979797"
         />
     <TextView
         android:layout_width="match_parent"

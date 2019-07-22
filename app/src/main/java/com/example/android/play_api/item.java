@@ -12,8 +12,9 @@ public class item implements Serializable {
     private String bible;
     private String devotion;
     private String prayer;
+    private String theme;
 
-    item(String month,int day,String title,Date date,String bible,String devotion,String prayer){
+    item(String month,int day,String title,Date date,String bible,String devotion,String prayer,String theme){
         this.month = month;
         this.day = day;
         this.title = title;
@@ -21,6 +22,7 @@ public class item implements Serializable {
         this.bible = bible;
         this.devotion = devotion;
         this.prayer = prayer;
+        this.theme = theme;
     }
 
     public int getDay() {
@@ -78,5 +80,13 @@ public class item implements Serializable {
 
     public void setPrayer(String prayer) {
         this.prayer = prayer;
+    }
+
+    public String getTheme() {
+        return theme;
+    }
+
+    public void setTheme(String theme) {
+        this.theme = theme;
     }
 }

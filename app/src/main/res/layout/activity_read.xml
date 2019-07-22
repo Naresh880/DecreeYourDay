@@ -8,13 +8,16 @@
     tools:context=".ReadActivity"
     android:id="@+id/drawer">
 
-
+<ImageView
+    android:id="@+id/frame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scaleType="centerCrop"/>
 
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bubbles"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -188,7 +191,7 @@ desires of your…"
             <android.support.v4.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#ffe5e5e5"
+                android:background="#00ffffff"
                 android:id="@+id/scroller"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
 

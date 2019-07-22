@@ -5,11 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainhomeActivity"
+    android:id="@+id/draw"
     android:background="@drawable/gradient_purple">
-    <LinearLayout
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bubbles"
+        android:src="@drawable/bubbles"
+        android:scaleType="centerCrop"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center">
 
@@ -18,7 +23,9 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center_horizontal"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="150dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
             >
 
             <TextView
@@ -53,8 +60,10 @@
             android:text="Read Devotion"
             android:textAllCaps="false"
             android:textColor="#ffffff"
-            android:textSize="16sp" />
-    </LinearLayout>
+            android:textSize="16sp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="75dp"/>
+    </RelativeLayout>
 
 
 

@@ -1,5 +1,6 @@
 package com.example.android.play_api;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +22,7 @@ public class SettingActivity extends AppCompatActivity implements AdapterView.On
     private Spinner sizes,langs;
     private com.suke.widget.SwitchButton switchButton;
     private TextView mode,save;
+    private ImageView close;
     int pos1,pos2;
     String username,size,language,theme;
 
@@ -62,11 +65,11 @@ public class SettingActivity extends AppCompatActivity implements AdapterView.On
         mode = (TextView) findViewById(R.id.mode);
         mode.setText(theme);
         switchButton = (SwitchButton) findViewById(R.id.toggle);
-        if(theme=="Light")
+        if(theme.equals("Light"))
         {
             switchButton.setChecked(true);
         }
-        else if(theme =="Dark")
+        else if(theme.equals("Dark"))
         {
             switchButton.setChecked(false);
         }
@@ -92,6 +95,15 @@ public class SettingActivity extends AppCompatActivity implements AdapterView.On
             @Override
             public void onClick(View view) {
                 save_info();
+                startActivity(new Intent(SettingActivity.this,MainhomeActivity.class));
+            }
+        });
+
+        close = (ImageView) findViewById(R.id.close);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SettingActivity.this.finish();
             }
         });
     }

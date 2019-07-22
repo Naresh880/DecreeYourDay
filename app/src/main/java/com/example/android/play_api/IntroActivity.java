@@ -239,6 +239,7 @@ public class IntroActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         username = name.getText().toString();
                         savename(username);
+                        saveTheme();
                         Toast.makeText(IntroActivity.this,"Saved",Toast.LENGTH_SHORT).show();
 
                     }

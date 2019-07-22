@@ -7,11 +7,16 @@
     tools:context=".PrayerActivity"
     android:id="@+id/drawer">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bubbles"
+        android:scaleType="centerCrop"/>
+
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bubbles"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 

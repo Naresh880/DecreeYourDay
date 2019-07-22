@@ -74,6 +74,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private CardView cardView;
     private LinearLayout previous;
     Dialog calendar_dialog;
+    private LinearLayout btns;
     private static final String URL = "https://dyd-njs.herokuapp.com/getDevotions";
 
     private List<item> itemList = new ArrayList<item>();
@@ -116,6 +117,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         toggler.syncState();
         scroller = (NestedScrollView) findViewById(R.id.scroller);
         scroller.setFadingEdgeLength(60);
+        btns = (LinearLayout) findViewById(R.id.btns);
+
+        if(getThem().equals("Dark"))
+        {
+            drawer.setBackgroundColor(Color.parseColor("#000000"));
+            btns.setBackgroundResource(R.drawable.dark);
+        }
 
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation);
@@ -192,6 +200,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         return prefs.getString("Name","User");
     }
 
+    private String getThem() {
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences("PLAY_API",MODE_PRIVATE);
+        return prefs.getString("Theme","Light");
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -251,7 +264,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                dialog.dismiss();
+
                 try {
                     Toast.makeText(HomeActivity.this,"response shown",Toast.LENGTH_SHORT).show();
                     JSONObject jsonObject = new JSONObject(response);
@@ -270,7 +283,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                         int ind = Integer.parseInt(dates[1]);
 
                         Date adder = new SimpleDateFormat("yyyy-MM-dd").parse(dat);
-                        itemList.add(new item(months[ind-1],Integer.parseInt(dates[2]),title,adder,verse,devotion,prayer));
+                        itemList.add(new item(months[ind-1],Integer.parseInt(dates[2]),title,adder,verse,devotion,prayer,getThem()));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -289,6 +302,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 adapter = new RecyclerAdapter(itemList);
                 recyclerView.setAdapter(adapter);
                 adapter.setOnItemClickListener(HomeActivity.this);
+                dialog.dismiss();
             }
         }, new Response.ErrorListener() {
             @Override

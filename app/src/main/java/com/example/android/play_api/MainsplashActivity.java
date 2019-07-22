@@ -1,6 +1,8 @@
 package com.example.android.play_api;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -49,6 +51,11 @@ public class MainsplashActivity extends AppCompatActivity implements NavigationV
 
         drawer = (DrawerLayout) findViewById(R.id.drawer);
 
+        if(getThem().equals("Dark"))
+        {
+            drawer.setBackgroundColor(Color.parseColor("#000000"));
+        }
+
         toggler = new ActionBarDrawerToggle(this,drawer,R.string.open,R.string.close);
         drawer.addDrawerListener(toggler);
         toggler.syncState();
@@ -59,10 +66,18 @@ public class MainsplashActivity extends AppCompatActivity implements NavigationV
 
         View header = navigationView.getHeaderView(0);
         TextView name = (TextView) header.findViewById(R.id.name);
-        String nameText = LoadName()+"!";
+        String nameText = getName()+"!";
         name.setText(nameText);
     }
 
+    private String getName() {
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences("PLAY_API",MODE_PRIVATE);
+        return prefs.getString("Name","User");
+    }
+    private String getThem() {
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences("PLAY_API",MODE_PRIVATE);
+        return prefs.getString("Theme","Light");
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -91,6 +106,11 @@ public class MainsplashActivity extends AppCompatActivity implements NavigationV
         else if(id == R.id.prayer)
         {
             startActivity(new Intent(MainsplashActivity.this,PrayerActivity.class));
+            drawer.closeDrawers();
+        }
+        else if(id == R.id.settings)
+        {
+            startActivity(new Intent(MainsplashActivity.this,SettingActivity.class));
             drawer.closeDrawers();
         }
         if(id== R.id.devotion)
